@@ -49,6 +49,24 @@ app.get("/bug", (req, res) => {
   res.send(usuario.nome); // erro proposital: não dá para ler "nome" de undefined
 });
 
+app.get("/pokeapi/:nome", async (req, res) => {
+  try {
+    const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${req.params.nome}`);
+    if (!resposta.ok) {
+      return res.status(404).json({ erro: "Pokémon não encontrado" });
+    }
+    const dados = await resposta.json();
+    res.json({
+      nome: dados.name,
+      altura: dados.height,
+      peso: dados.weight,
+      tipos: dados.types.map(t => t.type.name)
+    });
+  } catch (e) {
+    res.status(500).json({ erro: "Falha ao consultar a API" });
+  }
+});
+
 const html = `
 <!DOCTYPE html>
 <html>
