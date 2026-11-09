@@ -21,6 +21,21 @@ app.get("/tico", (req, res) => {
   res.send("teco");
 });
 
+app.get("/pokemons", (req, res) => {
+  res.json([
+    "Pikachu",
+    "Caterpie",
+    "Pidgeotto",
+    "Bulbasaur",
+    "Charmander",
+    "Squirtle",
+    "Krabby",
+    "Primeape",
+    "Muk",
+    "Tauros"
+  ]);
+});
+
 const html = `
 <!DOCTYPE html>
 <html>
