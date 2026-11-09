@@ -36,6 +36,14 @@ app.get("/pokemons", (req, res) => {
   ]);
 });
 
+app.post("/series", (req, res) => {
+  res.json([
+    "Breaking Bad",
+    "Stranger Things",
+    "La Casa de Papel"
+  ]);
+});
+
 const html = `
 <!DOCTYPE html>
 <html>
