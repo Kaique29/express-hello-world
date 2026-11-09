@@ -44,6 +44,11 @@ app.post("/series", (req, res) => {
   ]);
 });
 
+app.get("/bug", (req, res) => {
+  const usuario = undefined;
+  res.send(usuario.nome); // erro proposital: não dá para ler "nome" de undefined
+});
+
 const html = `
 <!DOCTYPE html>
 <html>
